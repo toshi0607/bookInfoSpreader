@@ -15,13 +15,13 @@ function spreadBookInfo() {
     return
   }
   var val = input
-  if (!val.match(/^[0-9]*$/)) {
+  if (isNaN(val)) {
     val = val.replace(/[０-９]/g, function(s) {
       return String.fromCharCode(s.charCodeAt(0) - 65248);
     });
   }
-  if (!val.match(/^[0-9]*$/)) {
-    Browser.msgBox("1列目にはISBNを入力してください")
+  if (isNaN(val)) {
+    Browser.msgBox("1列目にはISBNを入力してください");
     return
   }
   var book = getBook(val);
